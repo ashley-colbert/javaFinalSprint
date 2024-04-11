@@ -1,4 +1,5 @@
 import java.sql.Date;
+import java.sql.Time;
 
 
 public class MedicineReminder {
@@ -9,10 +10,11 @@ public class MedicineReminder {
     private String schedule;
     private Date startDate;
     private Date endDate;
+    private Time reminderTime;
 
     // Parameterized constructor
 
-    public MedicineReminder(int id, int userId, String medicineName, String dosage, String schedule, Date startDate, Date endDate) {
+    public MedicineReminder(int id, int userId, String medicineName, String dosage, String schedule, Date startDate, Date endDate, Time reminderTime) {
         this.id = id;
         this.userId = userId;
         this.medicineName = medicineName;
@@ -20,6 +22,7 @@ public class MedicineReminder {
         this.schedule = schedule;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.reminderTime = reminderTime;
     }
     
     //default constructor
@@ -32,6 +35,7 @@ public class MedicineReminder {
         this.schedule = null;
         this.startDate = null;
         this.endDate = null;
+        this.reminderTime = null;
     }
 
     //getters, and setters
@@ -91,5 +95,26 @@ public class MedicineReminder {
     public void setEndDate( Date endDate ) {
         this.endDate = endDate;
     }
+
+    public Time getReminderTime () {
+      return reminderTime;
+    }
+
+    public void setReminderTime( Time reminderTime) {
+      this.reminderTime = reminderTime;
+    }
+
+    @Override
+public String toString() {
+    return "MedicineReminder{" +
+            "id=" + id +
+            ", userId=" + userId +
+            ", medicineName='" + medicineName + '\'' +
+            ", dosage='" + dosage + '\'' +
+            ", schedule='" + schedule + '\'' +
+            ", startDate=" + startDate +
+            ", endDate=" + endDate +
+            '}';
+}
 
 }

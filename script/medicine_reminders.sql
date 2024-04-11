@@ -6,5 +6,6 @@ CREATE TABLE medicine_reminders (
     schedule VARCHAR(100) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
+    reminder_time time without time zone,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )
