@@ -1,0 +1,13 @@
+insert into users (id, first_name, last_name, email, password, is_doctor) values (1, 'Tiebout', 'Jobbins', 'tjobbins0@list-manage.com', '$2a$04$wRPW3iJSM35SanZ04fC/JOh8lx0Og4NTPwcXOPXUoZf8gj4I/7DXm', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (2, 'Cayla', 'Nevison', 'cnevison1@elpais.com', '$2a$04$lsjDnFBgFbabIyENb6gxyOChI3eahgeupBbAd.jkrAK8m5kIGUFka', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (3, 'Ian', 'Fassmann', 'ifassmann2@storify.com', '$2a$04$A8kc9iMEyjn8ZTI8FLyN5OMpPKacwSZGYrKZNJgs2WOhMzKb2Fyku', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (4, 'Sherilyn', 'Maseres', 'smaseres3@vkontakte.ru', '$2a$04$JlhuCc0tlJt35.s5Zqq.guvTLOM6/jKkiEMu/ZLgCOHT1KOPpl2I2', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (5, 'Mickey', 'Escritt', 'mescritt4@hugedomains.com', '$2a$04$ymwkitgwkNL5iWOpra7TtOZW./c7B7hm.MvXmaIDrB31zz5ePQWpC', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (6, 'Abagael', 'Swyn', 'aswyn5@list-manage.com', '$2a$04$qFOcu9J72W23aEmwO98l.eEaRv6coM8yNqqdj9gydtHycIiL5u.wW', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (7, 'Georgena', 'Trundler', 'gtrundler6@a8.net', '$2a$04$PUFe5CwMEI4ftNwhLD9o4.MNFontht8xsEMU/Q1hldpURtAgWvUHa', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (8, 'Kori', 'Trobridge', 'ktrobridge7@ucla.edu', '$2a$04$YfgabuyLVIFzGa0v.T1KKObcuiiL0J.QhKs/AMNFMxhjgLNxD61u6', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (9, 'Kalvin', 'Kyncl', 'kkyncl8@hp.com', '$2a$04$4dDecNaHinPmTH8Z7AdBj.6PgtwZtoJqMrp/S62yH1ZNUpj2XjKTq', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (10, 'Tremaine', 'Langrish', 'tlangrish9@netscape.com', '$2a$04$FA0LbqEHIGe/w4lOl/P8d.bFyCHu59ZQm0jcXUTx46pX65YXE7wpK', 'false');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (11, 'Kaye', 'Philips', 'kphilips0@sohu.com', '$2a$04$NHPnL7OU3dF4a.0bPDyMme4RnLPqTLCO.a6PTQdirGILwyMMMh//e', 'true');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (12, 'Johannah', 'Peascod', 'jpeascod1@cargocollective.com', '$2a$04$sI.TJYEKsqpbqJDDyQflq.R142XJU6KMriqzwf7nX8PGcZchpigmi', 'true');
+insert into users (id, first_name, last_name, email, password, is_doctor) values (13, 'Lanae', 'Katz', 'lkatz2@forbes.com', '$2a$04$UjD8YcnPs8DzYLCOLucF3.FE1YHbcVH4NvStex6/6k9DG2DNXYa02', 'true');
