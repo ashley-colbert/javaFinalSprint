@@ -89,7 +89,8 @@ public class HealthData {
   //to string
 
   public String toString() {
-      return "Weight: " + weight + "\n" +
+      return "Health Data: " + "\n" +
+      "Weight: " + weight + "\n" +
       "Height: " + height + "\n" +
       "Steps: " + steps + "\n" +
       "Heart Rate: " + heartRate + "\n" +

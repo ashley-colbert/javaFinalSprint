@@ -38,8 +38,11 @@ public class Doctor extends User{
   }
 
   //to String
-
+@Override
 public String toString() {
-  return "License Number:" + medicalLicenseNumber + ", Specialization: " + specialization;
+  return "Doctor: " + "\n" +
+  super.toString();
+  // "License Number:" + medicalLicenseNumber + "\n" +
+  // "Specialization: " + specialization;
 }
 }

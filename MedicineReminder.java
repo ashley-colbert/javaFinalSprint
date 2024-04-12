@@ -106,15 +106,13 @@ public class MedicineReminder {
 
     @Override
 public String toString() {
-    return "MedicineReminder{" +
-            "id=" + id +
-            ", userId=" + userId +
-            ", medicineName='" + medicineName + '\'' +
-            ", dosage='" + dosage + '\'' +
-            ", schedule='" + schedule + '\'' +
-            ", startDate=" + startDate +
-            ", endDate=" + endDate +
-            '}';
-}
-
+    return "Medicine Reminders: " + "\n" +
+            "ID: " + id + "\n" +
+            "User Id: " + userId +"\n" +
+            "Medicine Name: " + medicineName + "\n" +
+            "Dosage: " + dosage + "\n" +
+            "Schedule='" + schedule + "\n" +
+            "Start Date=" + startDate +"\n" +
+            "End Date=" + endDate;
+  }
 }

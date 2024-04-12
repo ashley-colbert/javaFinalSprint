@@ -1,33 +1,76 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class HealthMonitoringApp {
-  
+  Scanner pause = new Scanner(System.in);
   private static UserDao userDao = new UserDao();
-
+  
 
 
   public static void main(String[] args) {
+
+
+
     DatabaseConnection databaseConnection = new DatabaseConnection();
       UserDao userDao = new UserDao();
 
 
     List<User> userList = new ArrayList<>();
 
-    User user2 = new User (4, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // User user3 = new User (16, "John ", "Cole", "john@mail.com", "john123", false);
+    // userList.add(user3);
+
+    // User user4 = new User (15, "Andy", "Smith", "andy@mail.com", "andy123", true);
+    // userList.add(user4);
+
+    // User user5 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user5);
+
+    // User user6 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user6);
+
+    // User user7 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user7);
+
+    // User user8 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user8);
+
+    // User user9 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user9);
+
+    // User user10 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user10);
+
+    // User user11 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user11);
+
+    // User user12 = new User (15, "Ashley", "Colbert", "ashley@mail.com", "ashley123", false);
+    // userList.add(user12);
 
     for (User users : userList) {
       userDao.createUser(users);
     }
+    System.out.println(userList);
+
+  // to assign a doctor to a patient
+    // DoctorPortalDao dao = new DoctorPortalDao();
+    // dao.addDocPatRelation(17, 15);
+
+  //to call the function to test the login a user
+    // testLoginUser();
+
+   //to call the function to test the doctor portal
+   testDoctorPortal();
   }
 
 
+
   public static boolean loginUser(String email, String password) {
-    //implement method to login user.
     User user = userDao.getUserByEmail(email);
 
     if (user != null) {
-        // Compare the stored hashed password with the given password and return result
+      return userDao.verifyPassword(email, password);
     }
 
     return false;
@@ -36,12 +79,14 @@ public class HealthMonitoringApp {
 
 
   //to test the doctor portal
-  
+
   public static void testDoctorPortal() {
-    // Replace the doctorId with a valid ID from your database
-    int doctorId = 1;
+    DoctorPortalDao doctorPortalDao = new DoctorPortalDao();
+    int doctorId = 17;
 
     // Add code to Fetch the doctor by ID
+    // Doctor doctor = doctorPortalDao.getDoctorById(doctorId);
+    // System.out.println(doctor);
 
     // Add code to Fetch patients associated with the doctor
 
@@ -49,7 +94,23 @@ public class HealthMonitoringApp {
 
   }
 
+  public static void testLoginUser() {
+    Scanner input = new Scanner(System.in);
+    
+    System.out.println("Please enter your email");
+    String userEmail = input.nextLine();
+    System.out.println("Please enter your password");
+    String userPassword = input.nextLine();
 
+    boolean loginSuccess = loginUser(userEmail, userPassword);
+
+    if (loginSuccess) {
+        System.out.println("Login successful for: " + userEmail);
+    } else {
+        System.out.println("Incorrect email or password. Please try again.");
+    }
+    input.close();
+}
 
 
 }

@@ -35,37 +35,37 @@ public class DoctorPortalDao {
 
     public Doctor getDoctorById(int doctorId) {
 
-        // Implement this method
-        int id = 0;
-        String firstName = null;
-        String lastName = null;
-        String email = null;
-        String password = null;
-        boolean is_doctor = true;
+      // Implement this method
+      int id = 0;
+      String firstName = null;
+      String lastName = null;
+      String email = null;
+      String password = null;
+      boolean is_doctor = true;
 
-        //SQL query
+      //SQL query
 
-        String doc_query = "SELECT users.* FROM users INNER JOIN doctor_patient ON users.id = doctor_patient.doctor_id WHERE doctor_patient.doctor_id = ?";
+      String doc_query = "SELECT * FROM users WHERE id = ?";
 
-        // Database logic to get data by ID Using Prepared Statement
-        try {
-            Connection con = DatabaseConnection.getCon();
-            PreparedStatement statement = con.prepareStatement(doc_query);
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                id = rs.getInt("id");
-                firstName = rs.getString("first_name");
-                lastName = rs.getString("last_name");
-                email = rs.getString("email");
-                password = rs.getString("password");
-                is_doctor = rs.getBoolean("is_doctor");
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return new Doctor(id, firstName, lastName, email, password, is_doctor);
-    }
+      // Database logic to get data by ID Using Prepared Statement
+      try {
+          Connection con = DatabaseConnection.getCon();
+          PreparedStatement statement = con.prepareStatement(doc_query);
+          statement.setInt(1, id);
+          ResultSet rs = statement.executeQuery();
+          while (rs.next()) {
+              id = rs.getInt("id");
+              firstName = rs.getString("first_name");
+              lastName = rs.getString("last_name");
+              email = rs.getString("email");
+              password = rs.getString("password");
+              is_doctor = rs.getBoolean("is_doctor");
+          }
+      } catch (SQLException e){
+          e.printStackTrace();
+      }
+      return new Doctor(id, firstName, lastName, email, password, is_doctor);
+  }
 
     public List<User> getPatientsByDoctorId(int doctorId) {
         List<User> patients = new ArrayList<>();
@@ -139,5 +139,20 @@ public class DoctorPortalDao {
             return healthData;
     
         }
+
+  //to add doctor_patient relationship
+
+  public void addDocPatRelation(int doctorId, int patientId) {
+    String query ="INSERT INTO doctor_patient (doctor_id, patient_id) VALUES (?, ?)";
+
+    try (Connection con = DatabaseConnection.getCon();
+    PreparedStatement statement = con.prepareStatement(query)) {
+      statement.setInt(1, doctorId);
+      statement.setInt(2, patientId);
+      statement.executeUpdate();
+    } catch(SQLException e) {
+      e.printStackTrace();
+    }
+  }
 
     }

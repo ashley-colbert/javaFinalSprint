@@ -77,5 +77,14 @@ public class User {
       isDoctor = doctor;
   }
 
-
+//to string
+@Override
+public String toString() {
+  return "User: " + "\n" +
+  "ID: " + id + "\n" +
+  "First Name: " + firstName + "\n" +
+  "Last Name: " + lastName + "\n" +
+  "Email: " + email + "\n" +
+  "Is Doctor: " + isDoctor;
+  }
 }
