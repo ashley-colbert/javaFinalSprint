@@ -9,8 +9,7 @@ public class HealthData {
 
   // Constructors
 
-  public HealthData(int id, int userId, double weight, double height, int steps, int heartRate, String date) {
-      this.id = id;
+  public HealthData(int userId, double weight, double height, int steps, int heartRate, String date) {
       this.userId = userId;
       this.weight = weight;
       this.height = height;
@@ -87,7 +86,7 @@ public class HealthData {
   }
 
   //to string
-
+@Override
   public String toString() {
       return "Health Data: " + "\n" +
       "Weight: " + weight + "\n" +

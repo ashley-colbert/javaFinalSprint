@@ -51,7 +51,7 @@ public class DoctorPortalDao {
       try {
           Connection con = DatabaseConnection.getCon();
           PreparedStatement statement = con.prepareStatement(doc_query);
-          statement.setInt(1, id);
+          statement.setInt(1, doctorId);
           ResultSet rs = statement.executeQuery();
           while (rs.next()) {
               id = rs.getInt("id");
@@ -85,7 +85,7 @@ public class DoctorPortalDao {
         try {
             Connection con = DatabaseConnection.getCon();
             PreparedStatement statement = con.prepareStatement(pat_query);
-            statement.setInt(1, id);
+            statement.setInt(1,doctorId);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 id = rs.getInt("id");
@@ -106,7 +106,7 @@ public class DoctorPortalDao {
 
     public List<HealthData> getHealthDataByPatientId(int patientId) {
         List<HealthData> healthData = new ArrayList<>();
-        int id = 0;
+        // int id = 0;
         int userId = 0 ;
         double weight = 0;
         double height = 0;
@@ -115,22 +115,22 @@ public class DoctorPortalDao {
         String date = null;
 
         //SQL query
-        String data_query = "SELECT * FROM health_data WHERE id = ?";
+        String data_query = "SELECT * FROM health_data WHERE user_id = ?";
             // Database logic to get data by ID Using Prepared Statement
             try {
                 Connection con = DatabaseConnection.getCon();
                 PreparedStatement statement = con.prepareStatement(data_query);
-                statement.setInt(1, id);
+                statement.setInt(1, patientId);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
-                    id = rs.getInt("id");
+                    // id = rs.getInt("id");
                     userId = rs.getInt("user_id");
                     weight = rs.getDouble("weight");
                     height = rs.getDouble("height");
                     steps = rs.getInt("steps");
                     heartRate = rs.getInt("heart_rate");
                     date = rs.getString("date");
-                HealthData data = new HealthData(id, userId, weight, height, steps, heartRate, date);
+                HealthData data = new HealthData(userId, weight, height, steps, heartRate, date);
                 healthData.add(data);
                 }
             } catch (SQLException e){

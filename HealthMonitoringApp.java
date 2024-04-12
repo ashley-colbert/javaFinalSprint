@@ -13,9 +13,8 @@ public class HealthMonitoringApp {
 
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
-      UserDao userDao = new UserDao();
 
-
+    UserDao userDao = new UserDao();
     List<User> userList = new ArrayList<>();
 
     // User user3 = new User (16, "John ", "Cole", "john@mail.com", "john123", false);
@@ -53,6 +52,22 @@ public class HealthMonitoringApp {
     }
     System.out.println(userList);
 
+    //adding health data to a user:
+
+    // HealthDataDao healthDataDao = new HealthDataDao();
+    // List<HealthData> dataList = new ArrayList<>();
+
+    // HealthData data1 = new HealthData (15, 150, 70, 12000, 75, "2024-12-01");
+    // dataList.add(data1);
+
+    // HealthData data2 = new HealthData (15, 160, 70, 5000, 75, "2024-12-01");
+    // dataList.add(data2);
+
+    // for (HealthData data : dataList) {
+    //   healthDataDao.createHealthData(data);
+    //   System.out.println(data.toString());
+    // }
+
   // to assign a doctor to a patient
     // DoctorPortalDao dao = new DoctorPortalDao();
     // dao.addDocPatRelation(17, 15);
@@ -61,7 +76,7 @@ public class HealthMonitoringApp {
     // testLoginUser();
 
    //to call the function to test the doctor portal
-   testDoctorPortal();
+    testDoctorPortal();
   }
 
 
@@ -83,15 +98,25 @@ public class HealthMonitoringApp {
   public static void testDoctorPortal() {
     DoctorPortalDao doctorPortalDao = new DoctorPortalDao();
     int doctorId = 17;
+    int patientId = 15;
+    int userId = 15;
 
     // Add code to Fetch the doctor by ID
     // Doctor doctor = doctorPortalDao.getDoctorById(doctorId);
     // System.out.println(doctor);
 
     // Add code to Fetch patients associated with the doctor
+    List<User> patients = doctorPortalDao.getPatientsByDoctorId(doctorId);
+    System.out.println("Patients associated with this Doctor ID " + doctorId + ":");
+    for (User patient : patients) {
+        System.out.println(patient);
+    }
 
     // Add code to Fetch health data for the patient
-
+    List<HealthData> healthData = doctorPortalDao.getHealthDataByPatientId(userId);
+    for (HealthData data: healthData) {
+    System.out.println("Health data: " + data);
+    }
   }
 
   public static void testLoginUser() {
