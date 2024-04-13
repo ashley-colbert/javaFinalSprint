@@ -13,11 +13,11 @@ public class Doctor extends User{
       this.specialization = null;
   }
 
-  public Doctor() {
-      super();
-      this.medicalLicenseNumber = null;
-      this.specialization = null;
-  }
+  // public Doctor(String medicalLicenseNumber, String specialization, int id) {
+  //     super(id);
+  //     this.medicalLicenseNumber = medicalLicenseNumber;
+  //     this.specialization = specialization;
+  // }
 
   // Getters and setters for the new properties
 
@@ -37,12 +37,20 @@ public class Doctor extends User{
       this.specialization = specialization;
   }
 
+  public int getUserId() {
+    return getId();
+  }
+
+  // public void setUserId(int userId) {
+  //   this.userId = userId;
+  // }
+
   //to String
 @Override
 public String toString() {
   return "Doctor: " + "\n" +
-  super.toString();
-  // "License Number:" + medicalLicenseNumber + "\n" +
-  // "Specialization: " + specialization;
+  super.toString() + "\n" +
+  "License Number:" + medicalLicenseNumber + "\n" +
+  "Specialization: " + specialization;
 }
 }

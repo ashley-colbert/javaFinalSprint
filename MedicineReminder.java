@@ -14,8 +14,8 @@ public class MedicineReminder {
 
     // Parameterized constructor
 
-    public MedicineReminder(int id, int userId, String medicineName, String dosage, String schedule, Date startDate, Date endDate, Time reminderTime) {
-        this.id = id;
+    public MedicineReminder(int userId, String medicineName, String dosage, String schedule, Date startDate, Date endDate, Time reminderTime) {
+        // this.id = id;
         this.userId = userId;
         this.medicineName = medicineName;
         this.dosage = dosage;
@@ -111,8 +111,9 @@ public String toString() {
             "User Id: " + userId +"\n" +
             "Medicine Name: " + medicineName + "\n" +
             "Dosage: " + dosage + "\n" +
-            "Schedule='" + schedule + "\n" +
-            "Start Date=" + startDate +"\n" +
-            "End Date=" + endDate;
+            "Schedule:'" + schedule + "\n" +
+            "Start Date: " + startDate +"\n" +
+            "End Date:" + endDate + "\n" +
+            "Reminder Time:" + reminderTime;
   }
 }

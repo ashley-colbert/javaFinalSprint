@@ -24,6 +24,8 @@ public class RecommendationSystem {
         private static final int MIN_HEART_RATE = 60;
         private static final int MAX_HEART_RATE = 100;
         private static final int MIN_STEPS = 10000;
+        private static final int MAX_STEPS = 30000;
+        private static final int MIN_WEIGHT = 85;
 
         public List<String> generateRecommendations(HealthData healthData) {
         List<String> recommendations = new ArrayList<>();
@@ -44,11 +46,20 @@ public class RecommendationSystem {
                 recommendations.add("You're not reaching the recommended daily step count. " +
                 "Try to incorporate more walking or other physical activities into your daily routine.");
                 }
+        if (steps > MAX_STEPS) {
+                recommendations.add("You may have overdid it today. Exercise is great, but too much too fast could lead to injury. Remember to take things slow and build up gradually.");
+                }
+
+                //analyze weight
+        double weight = healthData.getWeight();
+        if (weight < MIN_WEIGHT) {
+                recommendations.add("Your weight seems a little low, you may want to consult a doctor to ensure you are not experiencing any health issues.");
+        }
 
         return recommendations;
         }
 
-        public boolean insertRecommendations(List<String> recommendations, HealthData healthData, Date date) {
+        public boolean insertRecommendations(int userId,List<String> recommendations, Date date) {
         boolean bool = false;
 
         //SQL query
@@ -59,7 +70,7 @@ public class RecommendationSystem {
         try (Connection con = DatabaseConnection.getCon();
         PreparedStatement statement = con.prepareStatement(query)) {
                 for (String recommendation : recommendations) {
-                        statement.setInt(1, healthData.getUserId());
+                        statement.setInt(1, userId);
                         statement.setString(2,recommendation);
                         statement.setDate(3, date);
                         int upDatedRows = statement.executeUpdate();

@@ -5,9 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
+
 public class DoctorPortalDao {
     private UserDao userDao;
     private HealthDataDao healthDataDao;
+    private Doctor doctor;
 
    // Complete all these methods and add more as needed
 
@@ -33,6 +37,45 @@ public class DoctorPortalDao {
         this.healthDataDao = healthDataDao;
     }
 
+    //add a doctor to the database
+
+    public boolean addDoctor(Doctor doctor) {
+      boolean bool = false;
+      Connection con = null;
+      PreparedStatement userStatement = null;
+      PreparedStatement doctorStatement = null;
+      String hashedPassword = BCrypt.hashpw(doctor.getPassword(), BCrypt.gensalt());
+
+      String user_query = "INSERT INTO public.users ( id, first_name, last_name, email, password, is_doctor) VALUES (?, ?, ?, ?, ?, ?)";
+      String doc_query = "INSERT INTO public.doctor(license_number, specialization, doctor_id) VALUES ( ?, ?, ?)";
+
+      try{
+        con = DatabaseConnection.getCon();
+
+        userStatement = con.prepareStatement(user_query);
+        userStatement.setInt(1, doctor.getId());
+        userStatement.setString(2, doctor.getFirstName());
+        userStatement.setString(3, doctor.getLastName());
+        userStatement.setString(4, doctor.getEmail());
+        userStatement.setString(5, hashedPassword);
+        userStatement.setBoolean(6, true);
+        userStatement.executeUpdate();
+
+        doctorStatement = con.prepareStatement(doc_query);
+        doctorStatement.setString(1, doctor.getMedicalLicenseNumber());
+        doctorStatement.setString(2, doctor.getSpecialization());
+        doctorStatement.setInt(3, doctor.getId());
+        doctorStatement.executeUpdate();
+
+        bool = true;
+      } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+      }
+      return bool;
+      }
+    
+
     public Doctor getDoctorById(int doctorId) {
 
       // Implement this method
@@ -42,10 +85,12 @@ public class DoctorPortalDao {
       String email = null;
       String password = null;
       boolean is_doctor = true;
+      String medicalLicenseNumber = null;
+      String specialization = null;
 
       //SQL query
 
-      String doc_query = "SELECT * FROM users WHERE id = ?";
+      String doc_query = "SELECT users.*, doctor.license_number, doctor.specialization FROM users JOIN doctor ON users.id = doctor.doctor_id WHERE users.id = ?";
 
       // Database logic to get data by ID Using Prepared Statement
       try {
@@ -60,11 +105,13 @@ public class DoctorPortalDao {
               email = rs.getString("email");
               password = rs.getString("password");
               is_doctor = rs.getBoolean("is_doctor");
+              medicalLicenseNumber = rs.getString("license_number");
+              specialization = rs.getString("specialization");
           }
       } catch (SQLException e){
           e.printStackTrace();
       }
-      return new Doctor(id, firstName, lastName, email, password, is_doctor);
+      return new Doctor(id, firstName, lastName, email, password, is_doctor, medicalLicenseNumber, specialization);
   }
 
     public List<User> getPatientsByDoctorId(int doctorId) {

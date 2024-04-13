@@ -5,3 +5,4 @@ CREATE TABLE doctor_patient (
     FOREIGN KEY (doctor_id) REFERENCES users(id),
     FOREIGN KEY (patient_id) REFERENCES users(id)
 )
+

@@ -79,16 +79,16 @@ public void deleteReminder(int reminderId) {
                 statement.setInt(1, userId);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
-                    int id = rs.getInt("id");
+                    // int id = rs.getInt("id");
                     int userID = rs.getInt("user_id");
                     String medicineName = rs.getString("medicine_name");
                     String dosage = rs.getString("dosage");
                     String schedule = rs.getString("schedule");
                     Date startDate = rs.getDate("start_date");
                     Date endDate = rs.getDate("end_date");
-                    Time reminderTime = rs.getTime("reminderTime");
+                    Time reminderTime = rs.getTime("reminder_time");
 
-                    MedicineReminder reminder = new MedicineReminder(id, userID, medicineName, dosage, schedule, startDate, endDate, reminderTime);
+                    MedicineReminder reminder = new MedicineReminder(userID, medicineName, dosage, schedule, startDate, endDate, reminderTime);
                     userReminders.add(reminder);
                 }
             } catch (SQLException e) {
@@ -113,7 +113,7 @@ public void deleteReminder(int reminderId) {
         ResultSet rs = statement.executeQuery();
 
         while (rs.next()) {
-          int id = rs.getInt("id");
+          // int id = rs.getInt("id");
           String medicineName = rs.getString("medicine_name");
           String dosage = rs.getString("dosage");
           String schedule = rs.getString("schedule");
@@ -124,7 +124,7 @@ public void deleteReminder(int reminderId) {
           LocalDateTime reminderDateTime = LocalDateTime.of(startDate.toLocalDate(), reminderTime.toLocalTime());
 
           if (!reminderDateTime.isAfter(LocalDateTime.of(nowD, nowT))) {
-            MedicineReminder reminder = new MedicineReminder(id, userId, medicineName, dosage, schedule, startDate, endDate, reminderTime);
+            MedicineReminder reminder = new MedicineReminder(userId, medicineName, dosage, schedule, startDate, endDate, reminderTime);
             dueReminders.add(reminder);
         }
         }
