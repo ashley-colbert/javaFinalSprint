@@ -4,6 +4,7 @@ CREATE TABLE public.doctor
     specialization character varying(64),
     doctor_id integer,
     PRIMARY KEY (license_number)
+    
 );
 
 ALTER TABLE doctor

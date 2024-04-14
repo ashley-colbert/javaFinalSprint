@@ -11,7 +11,6 @@ import org.mindrot.jbcrypt.BCrypt;
 public class DoctorPortalDao {
     private UserDao userDao;
     private HealthDataDao healthDataDao;
-    private Doctor doctor;
 
    // Complete all these methods and add more as needed
 
@@ -202,4 +201,4 @@ public class DoctorPortalDao {
     }
   }
 
-    }
+}
